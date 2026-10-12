@@ -20,23 +20,20 @@ def test_a_new_hero_has_full_health():
 
 def test_hero_take_damage():
     hero = Hero("Ada")
-    n = 15
-    remaning_xp = hero.take_damage(n)
-    assert remaning_xp
+    hero.take_damage(15)
+    assert hero.hp == 85
 
 def test_min_xp():
     hero = Hero("Ada")
-    n = 150
-    remaning_xp = hero.take_damage(n)
-    assert remaning_xp == 0
+    hero.take_damage(150)
+    assert hero.hp == 0
 
 def test_hero_heal():
     hero = Hero("Ada")
-    healing= hero.heal(50)
-    assert hero.hp + healing
+    hero.heal(50)
+    assert hero.hp <= 100
 
 def test_hero_is_alive():
-    hero = Hero("Ada")
     hero = Hero("Ada")
     assert hero.is_alive is True
 
