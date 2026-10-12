@@ -34,6 +34,12 @@ def test_hero_heal():
     hero.heal(50) 
     assert hero.hp == 95
 
+def test_hero_heal_above_100():
+    hero = Hero("Ada")
+    hero.take_damage(55)
+    hero.heal(60) 
+    assert hero.hp == 100
+    
 def test_hero_is_alive():
     hero = Hero("Ada")
     assert hero.is_alive is True
@@ -44,7 +50,15 @@ def test_hero_is_dead():
     assert hero.hp == 0
     assert hero.is_alive is False
 
+def test_hero_gain_xp():
+    hero = Hero("Ada")
+    hero.gain_xp(100)
+    assert hero.level == 2
 
+def test_hero_gain_more_levels():
+    hero = Hero("Ada")
+    hero.gain_xp(200)
+    assert hero.level == 3
 
 
    
