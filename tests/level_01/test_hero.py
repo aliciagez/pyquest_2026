@@ -11,7 +11,7 @@ from dungeon.hero import Hero
 
 
 # A first step, to get you going. Uncomment it, run it, then make it your own:
-#
+
 
 
 def test_a_new_hero_has_full_health():
@@ -23,19 +23,31 @@ def test_hero_take_damage():
     hero.take_damage(15)
     assert hero.hp == 85
 
-def test_min_xp():
+def test_max_damage():
     hero = Hero("Ada")
     hero.take_damage(150)
     assert hero.hp == 0
 
 def test_hero_heal():
     hero = Hero("Ada")
-    hero.heal(50)
-    assert hero.hp <= 100
+    hero.take_damage(55)
+    hero.heal(50) 
+    assert hero.hp == 95
 
 def test_hero_is_alive():
     hero = Hero("Ada")
     assert hero.is_alive is True
+
+def test_hero_is_dead():
+    hero = Hero("Ada")
+    hero.take_damage(100)
+    assert hero.hp == 0
+    assert hero.is_alive is False
+
+
+
+
+   
 
 
 # ---------------------------------------------------------------------------
