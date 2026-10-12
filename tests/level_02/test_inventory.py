@@ -27,6 +27,13 @@ def test_add_item_to_backpack():
     assert backpack.names() == ["Bow", "Sword"]
     assert backpack.total_weight == pytest.approx(0.3)
 
+def test_add_item_to_backpack():
+    backpack = Inventory()
+    sword = Item("Sword", 0.1, 5)
+    backpack.add(sword, 4)
+    assert backpack.names() == ["Sword"]
+    assert backpack.total_weight == pytest.approx(0.4)
+
 
 def test_find_item_in_backpack():
     backpack = Inventory()
