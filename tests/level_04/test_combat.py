@@ -29,6 +29,25 @@ def test_damage(attack, defense, critical, element, weakness, expected):
     assert calculate_damage(attack, defense, critical=critical, element=element, weakness=weakness) == expected
 
 
+@pytest.mark.parametrize(("attack", "defense"),
+     [
+    
+        pytest.param(10, -4, id="defence_zero"),
+       
+        
+     ],
+ )
+def test_damage_worong_input(attack, defense):
+     with pytest.raises(ValueError):
+        calculate_damage(attack, defense)
+    
+        
+
+
+
+
+
+
 
 
 
