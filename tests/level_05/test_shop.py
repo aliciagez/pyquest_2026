@@ -39,8 +39,23 @@ def test_not_enough_gold(hero, backpack, shop):
 
 def test_inventoru_full(hero, backpack, shop):
     backpack = Inventory(max_weight=5)
+    gold_before = hero.gold
     with pytest.raises(InventoryFullError):
         shop.buy(hero, backpack, "bow")
+    assert hero.gold == gold_before
+
+def shop_is_empty(hero, backpack, shop):
+    for _ in range(3): 
+        shop.buy(hero, backpack, "bow")
+    with pytest.raises(OutOfStockError, match= "shop is empty"):
+        shop.buy(hero, backpack, "bow")
+    assert shop.stock["bow"] == 0
+    assert shop.count("bow") == 3
+         
+
+
+
+
     
 
 
