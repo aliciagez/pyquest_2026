@@ -44,13 +44,14 @@ def test_inventoru_full(hero, backpack, shop):
         shop.buy(hero, backpack, "bow")
     assert hero.gold == gold_before
 
-def shop_is_empty(hero, backpack, shop):
+def test_shop_is_empty(hero, backpack, shop):
     for _ in range(3): 
         shop.buy(hero, backpack, "bow")
-    with pytest.raises(OutOfStockError, match= "shop is empty"):
+    gold_before = hero.gold
+    with pytest.raises(OutOfStockError, match="out of stock"):
         shop.buy(hero, backpack, "bow")
-    assert shop.stock["bow"] == 0
-    assert shop.count("bow") == 3
+    assert hero.gold == gold_before
+        
          
 
 
